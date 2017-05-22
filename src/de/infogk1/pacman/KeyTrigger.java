@@ -14,7 +14,7 @@ public class KeyTrigger {
 			if(trigger == keyCode){
 				triggered = setTo;
 				if(setTo) Listener.lastKey.push(this);
-				else Listener.lastKey.removeElement(this);
+				else if(Listener.lastKey.peek() == this) Listener.lastKey.pop();
 				break;
 			}
 		}
@@ -22,7 +22,10 @@ public class KeyTrigger {
 	
 	public boolean isLastKey(){
 		if(!Listener.lastKey.isEmpty() && Listener.lastKey.peek() == this && triggered) return true;
-		else return false;
+		else{
+			if(!triggered)Listener.lastKey.removeElement(this);
+			return false;
+		}
 	}
 	
 }
