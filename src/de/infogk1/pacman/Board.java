@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 
 public class Board extends JFrame{
 	
+	
+	
 	public Board(){
 		super();
 		this.setSize(1000, 800);
@@ -11,7 +13,7 @@ public class Board extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.add(new Panel());
+		this.add(new Pacman(50, 50));
 		this.addKeyListener(new Listener());
 	}
 }
