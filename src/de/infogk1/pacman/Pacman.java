@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 
 public class Pacman extends JPanel{
 
-	float x;
-	float y;
+	int x;
+	int y;
 	int speed = 500;
 	int rotation = 90;
 	long lastFrame = System.currentTimeMillis();
@@ -38,26 +38,34 @@ public class Pacman extends JPanel{
 		at.setToRotation(Math.toRadians(rotation), bf.getWidth()/2, bf.getHeight()/2);
 		AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
 		texture = op.filter(bf, null);
-		g.drawImage(texture, null, (int)x, (int)y);
+		g.drawImage(texture, null, (int)x-16, (int)y-16);
 	}
 	
 	public void update(float tslf){
 		
 		if(Listener.keys.get("right").isLastKey()){
-			x += speed*tslf;
 			rotation = 90;
 		}
 		if(Listener.keys.get("left").isLastKey()){
-			x -= speed*tslf;
-			rotation = -90;
+			rotation = 270;
 		}
 		if(Listener.keys.get("up").isLastKey()){
-			y -= speed*tslf;
 			rotation = 0;
 		}
 		if(Listener.keys.get("down").isLastKey()){
-			y += speed*tslf;
 			rotation = 180;
+		}
+		if(rotation/90 == 1&& x < 999 &&Var.maze[x+1][y] == 1){
+			x += speed*tslf;
+		}
+		if(rotation/90 == 3&& x > 0 &&Var.maze[x-1][y] == 1){
+			x -= speed*tslf;
+		}
+		if(rotation/90 == 0&& y > 0 &&Var.maze[x][y-1] == 1){
+			y -= speed*tslf;
+		}
+		if(rotation/90 == 2&& y < 799 &&Var.maze[x][y+1] == 1){
+			y += speed*tslf;
 		}
 	}
 	
