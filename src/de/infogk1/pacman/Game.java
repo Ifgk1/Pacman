@@ -16,6 +16,7 @@ public class Game implements Runnable{
 	public void run() {
 		while(!gestoppt){
 			b.repaint();
+			Spriteloader.loadMaze();
 			if(Listener.keys.get("space").triggered){
 				gestoppt = true;
 				System.exit(0);

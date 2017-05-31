@@ -16,7 +16,7 @@ public class Pacman extends JPanel{
 
 	int x;
 	int y;
-	int speed = 500;
+	int speed = 300;
 	int rotation = 90;
 	long lastFrame = System.currentTimeMillis();
 	BufferedImage texture;
@@ -42,7 +42,11 @@ public class Pacman extends JPanel{
 	}
 	
 	public void update(float tslf){
-		
+		speed = (int) (300*tslf);
+		if(Var.maze[x][y] == 0){
+			x = Var.xAnfang;
+			y = Var.yAnfang;
+		}
 		if(Listener.keys.get("right").isLastKey()){
 			rotation = 90;
 		}
@@ -55,17 +59,33 @@ public class Pacman extends JPanel{
 		if(Listener.keys.get("down").isLastKey()){
 			rotation = 180;
 		}
-		if(rotation/90 == 1&& x < 999 &&Var.maze[x+1][y] == 1){
-			x += speed*tslf;
+		if(rotation/90 == 1&& x < 999 &&Var.maze[x+speed][y] != 0){
+			x += speed;
+		}else if(rotation/90 == 1&&Var.maze[x+speed][y] == 0){
+			for(int i = speed-1; i > 0; i--){
+				if(Var.maze[x+i][y] != 0) x += i;
+			}
 		}
-		if(rotation/90 == 3&& x > 0 &&Var.maze[x-1][y] == 1){
-			x -= speed*tslf;
+		if(rotation/90 == 3&& x > 0 &&Var.maze[x-speed][y] != 0){
+			x -= speed;
+		}else if(rotation/90 == 3&&Var.maze[x-speed][y] == 0){
+			for(int i = speed-1; i > 0; i--){
+				if(Var.maze[x-i][y] != 0) x -= i;
+			}
 		}
-		if(rotation/90 == 0&& y > 0 &&Var.maze[x][y-1] == 1){
-			y -= speed*tslf;
+		if(rotation/90 == 0&& y > 0 &&Var.maze[x][y-speed] != 0){
+			y -= speed;
+		}else if(rotation/90 == 0&&Var.maze[x][y-speed] == 0){
+			for(int i = speed-1; i > 0; i--){
+				if(Var.maze[x][y-i] != 0) y -= i;
+			}
 		}
-		if(rotation/90 == 2&& y < 799 &&Var.maze[x][y+1] == 1){
-			y += speed*tslf;
+		if(rotation/90 == 2&& y < 799 &&Var.maze[x][y+speed] != 0){
+			y += speed;
+		}else if(rotation/90 == 2&&Var.maze[x][y+speed] == 0){
+			for(int i = speed-1; i > 0; i--){
+				if(Var.maze[x][y+i] != 0) y += i;
+			}
 		}
 	}
 	
