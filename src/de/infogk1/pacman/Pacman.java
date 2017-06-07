@@ -21,6 +21,7 @@ public class Pacman extends JPanel{
 	long lastFrame = System.currentTimeMillis();
 	BufferedImage texture;
 	AnimatePacman anim;
+	int nextRotation = -90;
 	
 	public Pacman(int x, int y){
 		this.x = x;
@@ -30,7 +31,7 @@ public class Pacman extends JPanel{
 	}
 	
 	public void draw(Graphics2D g){
-		g.drawString("Das ist Pacman", 40, 40);
+		g.drawImage(Var.mazePic, 0, 0, null);
 		g.setColor(Color.YELLOW);
 		if(Var.iPacman.length == 0)Var.iPacman = Spriteloader.getSprites(32, 32, 4, 1, 0, 0);
 		BufferedImage bf = Var.iPacman[Var.pacSprite];
@@ -42,49 +43,90 @@ public class Pacman extends JPanel{
 	}
 	
 	public void update(float tslf){
-		speed = (int) (300*tslf);
+		speed = 10;
 		if(Var.maze[x][y] == 0){
 			x = Var.xAnfang;
 			y = Var.yAnfang;
 		}
 		if(Listener.keys.get("right").isLastKey()){
-			rotation = 90;
+			nextRotation = 90;
 		}
 		if(Listener.keys.get("left").isLastKey()){
-			rotation = 270;
+			nextRotation = 270;
 		}
 		if(Listener.keys.get("up").isLastKey()){
-			rotation = 0;
+			nextRotation = 0;
 		}
 		if(Listener.keys.get("down").isLastKey()){
-			rotation = 180;
+			nextRotation = 180;
 		}
-		if(rotation/90 == 1&& x < 999 &&Var.maze[x+speed][y] != 0){
+		
+		if((rotation/90 == 1||nextRotation/90 == 1) && x < 999 &&Var.maze[x+speed][y] != 0){
+			if(nextRotation/90 == 1){
+				rotation = nextRotation;
+				nextRotation = -90;
+			}
 			x += speed;
-		}else if(rotation/90 == 1&&Var.maze[x+speed][y] == 0){
+		}else if((rotation/90 == 1||nextRotation/90 == 1) &&Var.maze[x+speed][y] == 0){
 			for(int i = speed-1; i > 0; i--){
-				if(Var.maze[x+i][y] != 0) x += i;
+				if(Var.maze[x+i][y] != 0){
+					x++;
+					if(nextRotation/90 == 1){
+						rotation = nextRotation;
+						nextRotation = -90;
+					}
+				}
 			}
 		}
-		if(rotation/90 == 3&& x > 0 &&Var.maze[x-speed][y] != 0){
+		if((rotation/90 == 3||nextRotation/90 == 3)&& x > 0 &&Var.maze[x-speed][y] != 0){
+			if(nextRotation/90 == 3){
+				rotation = nextRotation;
+				nextRotation = -90;
+			}
 			x -= speed;
-		}else if(rotation/90 == 3&&Var.maze[x-speed][y] == 0){
+		}else if((rotation/90 == 3||nextRotation/90 == 3)&&Var.maze[x-speed][y] == 0){
 			for(int i = speed-1; i > 0; i--){
-				if(Var.maze[x-i][y] != 0) x -= i;
+				if(Var.maze[x-i][y] != 0){
+					x--;
+					if(nextRotation/90 == 3){
+						rotation = nextRotation;
+						nextRotation = -90;
+					}
+				}
 			}
 		}
-		if(rotation/90 == 0&& y > 0 &&Var.maze[x][y-speed] != 0){
+		if((rotation/90 == 0||nextRotation/90 == 0)&& y > 0 &&Var.maze[x][y-speed] != 0){
+			if(nextRotation/90 == 0){
+				rotation = nextRotation;
+				nextRotation = -90;
+			}
 			y -= speed;
-		}else if(rotation/90 == 0&&Var.maze[x][y-speed] == 0){
+		}else if((rotation/90 == 0||nextRotation/90 == 0)&&Var.maze[x][y-speed] == 0){
 			for(int i = speed-1; i > 0; i--){
-				if(Var.maze[x][y-i] != 0) y -= i;
+				if(Var.maze[x][y-i] != 0){
+					y--;
+					if(nextRotation/90 == 0){
+						rotation = nextRotation;
+						nextRotation = -90;
+					}
+				}
 			}
 		}
-		if(rotation/90 == 2&& y < 799 &&Var.maze[x][y+speed] != 0){
+		if((rotation/90 == 2||nextRotation/90 == 2)&& y < 799 &&Var.maze[x][y+speed] != 0){
+			if(nextRotation/90 == 2){
+				rotation = nextRotation;
+				nextRotation = -90;
+			}
 			y += speed;
-		}else if(rotation/90 == 2&&Var.maze[x][y+speed] == 0){
+		}else if((rotation/90 == 2||nextRotation/90 == 2)&&Var.maze[x][y+speed] == 0){
 			for(int i = speed-1; i > 0; i--){
-				if(Var.maze[x][y+i] != 0) y += i;
+				if(Var.maze[x][y+i] != 0){
+					y++;
+					if(nextRotation/90 == 2){
+						rotation = nextRotation;
+						nextRotation = -90;
+					}
+				}
 			}
 		}
 	}
@@ -94,6 +136,8 @@ public class Pacman extends JPanel{
 		try {
 			if(Var.spriteSheet == null)
 				Var.spriteSheet = ImageIO.read(new File("res/pacman_sprites_full_32.png"));
+			if(Var.mazePic == null)
+				Var.mazePic = ImageIO.read(new File("res/maze pic.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

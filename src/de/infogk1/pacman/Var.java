@@ -7,6 +7,7 @@ public class Var {
 	static BufferedImage[] iPacman = {};
 	static int pacSprite = 0;
 	static BufferedImage spriteSheet;
+	static BufferedImage mazePic;
 	
 	static int[][] maze = new int[1000][800];
 	static int xAnfang = 50;
