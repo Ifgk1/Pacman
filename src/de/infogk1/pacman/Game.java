@@ -14,9 +14,9 @@ public class Game implements Runnable{
 	
 	@Override
 	public void run() {
+		Spriteloader.loadMaze();
 		while(!gestoppt){
 			b.repaint();
-			Spriteloader.loadMaze();
 			if(Listener.keys.get("space").triggered){
 				gestoppt = true;
 				System.exit(0);

@@ -43,7 +43,7 @@ public class Pacman extends JPanel{
 	}
 	
 	public void update(float tslf){
-		speed = 10;
+		speed = 1;
 		if(Var.maze[x][y] == 0){
 			x = Var.xAnfang;
 			y = Var.yAnfang;

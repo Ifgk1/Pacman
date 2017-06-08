@@ -25,10 +25,10 @@ public class Spriteloader
    public static void loadMaze(){
 	   try {
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File("res/maze.txt"))));
-		for(int i = 0; i < 800-1; i++){
+		for(int i = 0; i < 800; i++){
 			String line = br.readLine();
 			char[] c = line.toCharArray();
-			for(int j = 0; j < 1000-1; j++){
+			for(int j = 0; j < 1000; j++){
 				Var.maze[j][i] = Integer.parseInt("" + c[j]);
 				if(Integer.parseInt("" + c[j]) == 2){
 					Var.xAnfang = j;
