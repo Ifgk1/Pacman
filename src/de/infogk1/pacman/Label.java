@@ -12,6 +12,7 @@ public class Label extends JLabel{
 
 
 	Pacman p = new Pacman(400, 400);
+	Ghost z = new Ghost(400, 400);
 	Background b = new Background();
 	
 	@Override
@@ -35,7 +36,9 @@ public class Label extends JLabel{
 		
 		b.draw(g2);
 		p.draw(g2);
+		z.draw(g2);
 		p.update();
+		z.update();
 	}
 	
 }

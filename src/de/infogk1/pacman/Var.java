@@ -5,7 +5,9 @@ import java.awt.image.BufferedImage;
 public class Var {
 
 	static BufferedImage[] iPacman = {};
+	static BufferedImage[] iGhost1 = {};
 	static int pacSprite = 0;
+	static int ghoSprite = 0;
 	static BufferedImage spriteSheet;
 	static BufferedImage mazePic;
 	
