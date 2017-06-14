@@ -21,6 +21,12 @@ public class Game implements Runnable{
 				gestoppt = true;
 				System.exit(0);
 			}
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

@@ -10,9 +10,9 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
+import javax.swing.JLabel;
 
-public class Pacman extends JPanel{
+public class Pacman{
 
 	int x;
 	int y;
@@ -31,7 +31,6 @@ public class Pacman extends JPanel{
 	}
 	
 	public void draw(Graphics2D g){
-		g.drawImage(Var.mazePic, 0, 0, null);
 		g.setColor(Color.YELLOW);
 		if(Var.iPacman.length == 0)Var.iPacman = Spriteloader.getSprites(32, 32, 4, 1, 0, 0);
 		BufferedImage bf = Var.iPacman[Var.pacSprite];
@@ -130,23 +129,6 @@ public class Pacman extends JPanel{
 			}
 		}
 	}
-	
-	@Override
-	protected void paintComponent(Graphics g) {
-		try {
-			if(Var.spriteSheet == null)
-				Var.spriteSheet = ImageIO.read(new File("res/pacman_sprites_full_32.png"));
-			if(Var.mazePic == null)
-				Var.mazePic = ImageIO.read(new File("res/maze pic.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		Graphics2D g2 = (Graphics2D) g;
-		super.paintComponent(g2);
-		this.draw(g2);
-		update();
-	}
-	
 	
 	public void update(){
 		long thisFrame = System.currentTimeMillis();

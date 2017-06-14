@@ -18,7 +18,7 @@ public class Board extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.add(new Pacman(400, 400));
+		this.add(new Label());
 		this.addKeyListener(new Listener());
 	}
 }
