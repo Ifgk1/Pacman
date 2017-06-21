@@ -13,12 +13,14 @@ public class Board extends JFrame{
 	
 	
 	public Board(){
-		this.setSize(1000, 800);
+		this.setSize(1000, 850);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.add(new Label());
+		this.setJMenuBar(new Menu().getMenuebar());
+		this.validate();
 		this.addKeyListener(new Listener());
 	}
 }

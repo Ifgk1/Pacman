@@ -4,7 +4,7 @@ public class Game implements Runnable{
 
 	private Board b;
 	
-	private static boolean gestoppt;
+	public static boolean gestoppt;
 	
 	public Game(){
 		gestoppt = false;
@@ -16,6 +16,7 @@ public class Game implements Runnable{
 	public void run() {
 		Spriteloader.loadMaze();
 		while(!gestoppt){
+			if(!Var.pausiert)
 			b.repaint();
 			if(Listener.keys.get("space").triggered){
 				gestoppt = true;

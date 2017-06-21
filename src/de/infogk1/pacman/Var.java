@@ -21,5 +21,7 @@ public class Var{
 	static int[][] maze = new int[1000][800];
 	static int xAnfang = 50;
 	static int yAnfang = 50;
+	
+	static boolean pausiert = false;
 
 }

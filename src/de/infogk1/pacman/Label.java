@@ -7,8 +7,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class Label extends JLabel{
+public class Label extends JPanel{
 
 
 	Pacman p = new Pacman(400, 400);
