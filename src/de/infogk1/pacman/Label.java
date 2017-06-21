@@ -17,12 +17,6 @@ public class Label extends JLabel{
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		try {
-			if(Var.spriteSheet == null)
-				Var.spriteSheet = ImageIO.read(new File("res/pacman_sprites_full_32.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		Graphics2D g2 = (Graphics2D) g;
 		super.paintComponent(g2);
 

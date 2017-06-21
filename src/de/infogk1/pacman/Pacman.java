@@ -27,12 +27,10 @@ public class Pacman{
 		this.x = x;
 		this.y = y;
 		anim = new AnimatePacman();
-		anim.start();
 	}
 	
 	public void draw(Graphics2D g){
 		g.setColor(Color.YELLOW);
-		if(Var.iPacman.length == 0)Var.iPacman = Spriteloader.getSprites(32, 32, 4, 1, 0, 0);
 		BufferedImage bf = Var.iPacman[Var.pacSprite];
 		AffineTransform at = new AffineTransform();
 		at.setToRotation(Math.toRadians(rotation), bf.getWidth()/2, bf.getHeight()/2);
@@ -132,8 +130,9 @@ public class Pacman{
 	
 	public void update(){
 		long thisFrame = System.currentTimeMillis();
-		float tslf = (thisFrame-lastFrame)/1000f;
+		float tslf = (thisFrame-lastFrame);
 		lastFrame = thisFrame;
+		anim.start(tslf);
 		this.update(tslf);
 	}
 	

@@ -22,22 +22,20 @@ public class Ghost
 	int rotation = 90;
 	long lastFrame = System.currentTimeMillis();
 	BufferedImage texture;
+	AnimateGhost anim;
 	int nextRotation = -90;
 	int zufall = 0;
 	
 	public Ghost(int x, int y)
 	{
+		anim = new AnimateGhost();
 		this.x = x;
 		this.y = y;
 	}
 	
 	public void draw(Graphics2D g){
-		if(Var.iGhost1.length == 0)Var.iGhost1 = Spriteloader.getSprites(32, 32, 4, 4, 0, 0);
-		BufferedImage bf = Var.iGhost1[Var.ghoSprite];
-		AffineTransform at = new AffineTransform();
-		at.setToRotation(Math.toRadians(rotation), bf.getWidth()/2, bf.getHeight()/2);
-		AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
-		texture = op.filter(bf, null);
+		BufferedImage bf = Var.iGhost[Var.ghoSprite];
+		texture = bf;
 		g.drawImage(texture, null, (int)x-16, (int)y-16);
 	}
 	
@@ -132,9 +130,10 @@ public class Ghost
 	
 	public void update(){
 		long thisFrame = System.currentTimeMillis();
-		float tslf = (thisFrame-lastFrame)/1000f;
+		float tslf = (thisFrame-lastFrame);
 		lastFrame = thisFrame;
 		if(nextRotation == -90)zufall = (int)(Math.random() * 4) + 1;
+		anim.start(tslf);
 		this.update(tslf);
 	}
 }
