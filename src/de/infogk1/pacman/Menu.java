@@ -57,7 +57,9 @@ public class Menu implements ActionListener, ItemListener {
 			}
 		});
 		
-		
+		textIconMenuItem.setAccelerator(KeyStroke.getKeyStroke(
+				KeyEvent.VK_2, ActionEvent.ALT_MASK));
+		menu1.add(textIconMenuItem);
 		
 		
 		
@@ -71,7 +73,9 @@ public class Menu implements ActionListener, ItemListener {
 				}
 			});
 
-		
+		iconMenuItem.setAccelerator(KeyStroke.getKeyStroke(
+				KeyEvent.VK_3, ActionEvent.ALT_MASK));
+		menu1.add(iconMenuItem);
 		return mainMenuBar;
 	}
 	
