@@ -22,6 +22,6 @@ public class Var{
 	static int xAnfang = 50;
 	static int yAnfang = 50;
 	
-	static boolean pausiert = false;
+	static boolean pausiert = true;
 
 }

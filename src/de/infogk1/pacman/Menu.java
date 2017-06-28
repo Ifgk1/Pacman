@@ -37,7 +37,25 @@ public class Menu implements ActionListener, ItemListener {
 		plainTextMenuItem.setAccelerator(KeyStroke.getKeyStroke(
 				KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		menu1.add(plainTextMenuItem);
-		menu1.addSeparator();
+		plainTextMenuItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Var.pausiert = false;
+			}
+		});
+		
+		textIconMenuItem = new JMenuItem("PAUSE", KeyEvent.VK_P);
+		menu1.add(textIconMenuItem);
+		textIconMenuItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Var.pausiert = !Var.pausiert;
+			}
+		});
 		
 		
 		
@@ -53,9 +71,7 @@ public class Menu implements ActionListener, ItemListener {
 		submenu.add(subMenuItem);
 		menu1.add(submenu);
 		
-		menu2 = new JMenu("Menu 2");
-		menu2.setMnemonic(KeyEvent.VK_M);
-		mainMenuBar.add(menu2);
+
 		
 		return mainMenuBar;
 	}
@@ -114,7 +130,7 @@ public class Menu implements ActionListener, ItemListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Var.pausiert = true;
+				Var.pausiert = !Var.pausiert;
 			}
 		});
 		menu1.add(iconMenuItem);
@@ -124,7 +140,7 @@ public class Menu implements ActionListener, ItemListener {
 		
 		
 		
-		menu1.addSeparator();
+		
 		
 		
 		

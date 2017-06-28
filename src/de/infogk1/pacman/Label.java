@@ -16,11 +16,12 @@ public class Label extends JPanel{
 	Ghost z = new Ghost(400, 400);
 	Background b = new Background();
 	
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		super.paintComponent(g2);
-
+	if(!Var.pausiert){
 		try{
 			if(Var.mazePic == null)
 				Var.mazePic = ImageIO.read(new File("res/maze pic.png"));
@@ -35,5 +36,5 @@ public class Label extends JPanel{
 		p.update();
 		z.update();
 	}
-	
+	}
 }
