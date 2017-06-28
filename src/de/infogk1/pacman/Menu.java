@@ -61,16 +61,15 @@ public class Menu implements ActionListener, ItemListener {
 		
 		
 		
-		submenu = new JMenu("OPTIONEN");
-		submenu.setMnemonic(KeyEvent.VK_S);
-		subMenuItem = new JMenuItem("Lautstärke");
-		subMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2,
-				ActionEvent.CTRL_MASK));
-		submenu.add(subMenuItem);
-		subMenuItem = new JMenuItem("Cheats");
-		submenu.add(subMenuItem);
-		menu1.add(submenu);
-		
+		iconMenuItem = new JMenuItem("BEENDEN");
+		menu1.add(iconMenuItem);
+		iconMenuItem.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.exit(0);
+				}
+			});
 
 		
 		return mainMenuBar;
