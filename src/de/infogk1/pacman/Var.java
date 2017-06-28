@@ -2,7 +2,6 @@ package de.infogk1.pacman;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-
 import javax.imageio.ImageIO;
 
 public class Var{
@@ -21,7 +20,11 @@ public class Var{
 	static int[][] maze = new int[1000][800];
 	static int xAnfang = 50;
 	static int yAnfang = 50;
-	
-	static boolean pausiert = true;
+	static int xgho = 0;
+	static int ygho = 0;
+	static int xpac = 0;
+	static int ypac = 0;
+	static boolean pausiert = false;
+	static boolean kollision = false;
 
 }

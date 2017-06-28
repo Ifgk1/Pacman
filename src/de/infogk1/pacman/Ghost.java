@@ -126,6 +126,8 @@ public class Ghost
 		}
 		
 		if(xAlt == x&&yAlt == y) zufall = (int)(Math.random() * 4) + 1;
+		Var.xgho = x;
+		Var.ygho = y;
 	}
 	
 	public void update(){
@@ -135,5 +137,6 @@ public class Ghost
 		if(nextRotation == -90)zufall = (int)(Math.random() * 4) + 1;
 		anim.start(tslf);
 		this.update(tslf);
+		new Kollision().Kollision();
 	}
 }

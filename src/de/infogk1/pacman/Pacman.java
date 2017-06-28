@@ -126,6 +126,8 @@ public class Pacman{
 				}
 			}
 		}
+		Var.xpac = x;
+		Var.ypac = y;
 	}
 	
 	public void update(){
